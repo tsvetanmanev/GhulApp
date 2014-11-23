@@ -18,7 +18,11 @@ namespace GhulApp.ViewModels
             {
                 return model => new AddressViewModel()
                 {
-                    Name = model.Name
+                    Name = model.Name,
+                    AddressText = model.AddressText,
+                    TreasuryAmount = model.TreasuryAmount,
+                    Families = model.Families,
+                    Goals = model.Goals
                 };
             }
         }
@@ -36,5 +40,13 @@ namespace GhulApp.ViewModels
             }
         }
 
+
+        public string AddressText { get; set; }
+
+        public double TreasuryAmount { get; set; }
+
+        public IEnumerable<FamilyModel> Families { get; set; }
+
+        public IEnumerable<GoalModel> Goals { get; set; }
     }
 }

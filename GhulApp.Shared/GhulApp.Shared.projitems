@@ -22,12 +22,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\AddressModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\FamilyModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\GoalModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\AddressDetailsPage.xaml.cs">
+      <DependentUpon>AddressDetailsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AddressDetailsPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AddressViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainPageViewModel.cs" />
@@ -37,6 +41,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\AddressDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

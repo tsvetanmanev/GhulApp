@@ -1,6 +1,5 @@
 ﻿using GhulApp.Common;
 using GhulApp.ViewModels;
-using Parse;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,18 +24,18 @@ namespace GhulApp.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class AddressDetailsPage : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public MainPage()
-            :this(new MainPageViewModel())
+        public AddressDetailsPage()
+            :this(new AddressDetailsPageViewModel())
         {
 
         }
 
-        public MainPage(MainPageViewModel viewModel)
+        public AddressDetailsPage(AddressDetailsPageViewModel viewModel)
         {
             this.InitializeComponent();
 
@@ -44,7 +43,7 @@ namespace GhulApp.Pages
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
 
-            this.DataContext = viewModel;
+            this.ViewModel = viewModel;
         }
 
         /// <summary>
@@ -108,6 +107,7 @@ namespace GhulApp.Pages
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            this.ViewModel.Address = e.Parameter as AddressViewModel;
             this.navigationHelper.OnNavigatedTo(e);
         }
 
@@ -123,11 +123,16 @@ namespace GhulApp.Pages
             this.Frame.Navigate(typeof(LoginPage));
         }
 
-        private void OnAddressListViewSelection(object sender, SelectionChangedEventArgs e)
+        public AddressDetailsPageViewModel ViewModel
         {
-            var addressesListView = (sender as ListView);
-            var selectedObject = addressesListView.SelectedItem;
-            this.Frame.Navigate(typeof(AddressDetailsPage), selectedObject);
+            get
+            {
+                return (AddressDetailsPageViewModel) this.DataContext;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
     }
 }
