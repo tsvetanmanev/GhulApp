@@ -23,16 +23,16 @@
             <TextBlock Grid.Row="0"
                        Grid.Column="0"
                        Grid.ColumnSpan="2"
-                       Text="{Binding TitleText}" 
+                        Text="{Binding TitleText}" 
                        Style="{ThemeResource HeaderTextBlockStyle}"/>
-            <TextBlock Text="TrollUser"
+            <TextBlock Text="{Binding Username}"
                        Grid.Row="0"
                        Grid.Column="1" 
                        FontSize="37"/>
             <Button Content="Sign out"
                     Click="OnSignOutButtonClick"
                     Grid.Row="1"
-                    Grid.Column="1"/>
+                       Grid.Column="1"/>
         </Grid>
     </StackPanel>
 </UserControl>

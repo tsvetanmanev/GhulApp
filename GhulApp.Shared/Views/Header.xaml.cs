@@ -27,6 +27,15 @@ namespace GhulApp.Views
             this.DataContext = this;
         }
 
+        public string Username
+        {
+            get
+            {
+                return ParseUser.CurrentUser.Username;
+            }
+        }
+
+
         public string TitleText
         {
             get { return (string)GetValue(TitleTextProperty); }

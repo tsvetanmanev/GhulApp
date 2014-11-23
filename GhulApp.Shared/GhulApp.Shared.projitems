@@ -19,15 +19,18 @@
     <Compile Include="$(MSBuildThisFileDirectory)Common\ObservableDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\RelayCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\SuspensionManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\CategoryModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\EventModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\AddressModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\FamilyModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\GoalModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AddressViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\UserViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Header.xaml.cs">
       <DependentUpon>Header.xaml</DependentUpon>

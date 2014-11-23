@@ -31,12 +31,20 @@ namespace GhulApp.Pages
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
         public MainPage()
+            :this(new MainPageViewModel())
+        {
+
+        }
+
+        public MainPage(MainPageViewModel viewModel)
         {
             this.InitializeComponent();
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+
+            this.DataContext = viewModel;
         }
 
         /// <summary>
@@ -114,5 +122,10 @@ namespace GhulApp.Pages
         {
             this.Frame.Navigate(typeof(LoginPage));
         }
+
+        //private void OnLoadPuzzleButtonClicked(object sender, RoutedEventArgs e)
+        //{
+        //    this.Frame.Navigate(typeof(PuzzleGame));
+        //}
     }
 }

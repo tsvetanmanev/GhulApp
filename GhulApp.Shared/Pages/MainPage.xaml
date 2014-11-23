@@ -30,7 +30,19 @@
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <ListView ItemsSource="{Binding Addresses}"
+                      ItemTemplate="{StaticResource AddressTemplate}"/>
             
+            
+            <!--<Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            
+            <Button Content="Choose location" Grid.Row="0"/>
+            <Button Content="Families" Grid.Row="1"/>
+            <Button Content="Goals" Grid.Row="2"/>-->
         </Grid>
     </Grid>
 </Page>

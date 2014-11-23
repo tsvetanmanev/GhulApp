@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -45,11 +46,59 @@ namespace GhulApp
             this.InitParse();
         }
 
-        private void InitParse()
+        private async void InitParse()
         {
             ParseClient.Initialize("FR7K66NOMcrxbmuxDUhBO5OJMWVNJCMhKMRlVqET", "6HXFSvRrH2pEoz7VmKOYkipm0J6uaCuhWPYZERVU");
 
-            ParseObject.RegisterSubclass<EventModel>();
+            ParseObject.RegisterSubclass<FamilyModel>();
+            ParseObject.RegisterSubclass<AddressModel>();
+            ParseObject.RegisterSubclass<GoalModel>();
+
+            //int count = 15;
+            //this.CreateTestFamilies(count);
+            //var families = await this.GetFamilies();
+            //var b = 7;
+            //FamilyModel firstFamily = families.FirstOrDefault();
+            
+
+        }
+        
+        private async Task<IEnumerable<FamilyModel>> GetFamilies()
+        {
+            var families = await new ParseQuery<FamilyModel>().FindAsync();
+            return families;
+        }
+
+        private async void CreateTestFamilies(int count)
+        {
+            var banishoraAddress = new AddressModel
+            {
+                Name = "Lulin 458",
+                AddressText = "Lulin, bl 458, e. V",
+                GeoLocation = new ParseGeoPoint(42.709830, 23.246002),
+                TreasuryAmount = 8000d
+            };
+            //var families = new List<FamilyModel>();
+            for (int i = 0; i < count; i++)
+            {
+                var title = string.Format("Lulinovi #{0}", i + 1);
+                var appNum = (i+4).ToString();
+                double moneyAmount = (double)(15 * i);
+                DateTime randomDay = DateTime.Now.AddDays(-2);
+
+                var family = new FamilyModel()
+                {
+                    Name = title,
+                    AppartmentNumber = appNum,
+                    Money = moneyAmount,
+                    LastCollectedDate = randomDay,
+                    Address = banishoraAddress
+                };
+                var c = 6;
+                await family.SaveAsync();
+                //families.Add(family);
+            }
+            var b = 5;
         }
 
         /// <summary>

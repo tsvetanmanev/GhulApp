@@ -4,9 +4,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:GhulApp">
     <Application.Resources>
-        <x:String x:Key="AppName">Ghul App</x:String>
+        <x:String x:Key="AppName">Block manager</x:String>
         <Style x:Key="LabelTextBlockStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="30"/>
         </Style>
+        <DataTemplate x:Key="AddressTemplate">
+            <StackPanel>
+                <TextBlock Text="{Binding Name}"
+                           FontSize="32" />
+            </StackPanel>
+        </DataTemplate>
     </Application.Resources>
 </Application>
