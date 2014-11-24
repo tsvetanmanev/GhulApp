@@ -1,13 +1,9 @@
 ﻿using GhulApp.Common;
-using GhulApp.Models;
-using GhulApp.ViewModels;
-using Parse;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
@@ -27,26 +23,18 @@ namespace GhulApp.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class AddressDetailsPage : Page
+    public sealed partial class FamilyPaymentPage : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public AddressDetailsPage()
-            :this(new AddressDetailsPageViewModel())
-        {
-
-        }
-
-        public AddressDetailsPage(AddressDetailsPageViewModel viewModel)
+        public FamilyPaymentPage()
         {
             this.InitializeComponent();
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
-
-            this.ViewModel = viewModel;            
         }
 
         /// <summary>
@@ -110,9 +98,7 @@ namespace GhulApp.Pages
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.ViewModel.Address = e.Parameter as AddressViewModel;
             this.navigationHelper.OnNavigatedTo(e);
-            var b = 5;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -125,31 +111,6 @@ namespace GhulApp.Pages
         private void OnSignOutCompleted(object sender, EventArgs e)
         {
             this.Frame.Navigate(typeof(LoginPage));
-        }
-
-        public AddressDetailsPageViewModel ViewModel
-        {
-            get
-            {
-                return (AddressDetailsPageViewModel) this.DataContext;
-            }
-            set
-            {
-                this.DataContext = value;
-            }
-        }
-
-        private void OnLoadFamiliesButtonClicked(object sender, RoutedEventArgs e)
-        {
-            var b = 5;
-            ViewModel.LoadFamilies();
-        }
-
-        private void OnFamilyListViewSelection(object sender, SelectionChangedEventArgs e)
-        {
-            var familiesListView = (sender as ListView);
-            var selectedObject = familiesListView.SelectedItem;
-            this.Frame.Navigate(typeof(FamilyPaymentPage), selectedObject);
         }
     }
 }

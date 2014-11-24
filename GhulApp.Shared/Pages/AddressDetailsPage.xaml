@@ -38,27 +38,30 @@
             <StackPanel DataContext="{Binding Address}"
                         Grid.Row="0" 
                         Grid.ColumnSpan="2"
-                        Margin="0 0 0 20"/>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="{Binding AddressText}" 
+                        Margin="0 0 0 20">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding AddressText}" 
                            Grid.Column="0"
                            FontSize="26"/>
-                <TextBlock Text="{Binding TreasuryAmount}"
+                    <TextBlock Text="{Binding TreasuryAmount}"
                            Grid.Column="1"
                            FontSize="26"
                            TextAlignment="Right"/>
-            </Grid>
+                </Grid>
+            </StackPanel>
 
             <Button Grid.Row="1"
                     Content="Load Families"
                     Click="OnLoadFamiliesButtonClicked"/>
 
             <ListView ItemsSource="{Binding Families}"
-                      Grid.Row="2">
+                      Grid.Row="2"
+                      SelectionChanged="OnFamilyListViewSelection"
+                      SelectionMode="Single">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">

@@ -25,7 +25,6 @@ namespace GhulApp.ViewModels
 
             var currentAddress = this.Address;
             var families = await new ParseQuery<FamilyModel>()
-                //.Where(fam => fam.Address.ObjectId == "5kjqecm9db")
                 .FindAsync();
             this.Families = families.AsQueryable();
 
