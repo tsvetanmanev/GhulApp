@@ -30,7 +30,19 @@
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-
+            
+            
+            
+            
+            
+            
+            <MediaElement x:Name="DoorbellSound" Source="/Assets/Doorbell.mp3" AutoPlay="False"/>
+            <MediaElement x:Name="KnockingSound" Source="/Assets/Knocking.mp3" AutoPlay="False"/>
+            <!-- Begins media playback. -->
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+                <Button Click="PlayDoorbellSound" Content="Ring Doorbell" HorizontalAlignment="Left"/>
+                <Button Click="PlayKnockingSound" Content="Ring Doorbell" HorizontalAlignment="Right"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using ShakeGestures;
+using Windows.UI.Core;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -35,7 +37,42 @@ namespace GhulApp.Pages
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+
+            //Register a new shake event
+            //ShakeGesturesHelper.Instance.ShakeGesture +=
+            //              new EventHandler<ShakeGestureEventArgs>(Perform_Shakeevent);
+
+            ////set the no of shake parameter after which you want shake event handler to fire
+            //ShakeGesturesHelper.Instance.MinimumRequiredMovesForShake = 3;
+
+            ////Activate the shake gesture helper
+            //ShakeGesturesHelper.Instance.Active = true;
+            
         }
+
+        private void PlayDoorbellSound(object sender, RoutedEventArgs e)
+        {
+            DoorbellSound.Play();
+        }
+
+
+
+        private void PlayKnockingSound(object sender, RoutedEventArgs e)
+        {
+            KnockingSound.Play();
+        }
+
+
+
+        //private void Perform_Shakeevent(object sender, ShakeGestureEventArgs e)
+        //{
+        //    this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,() =>
+        //    {
+        //        this.ScenarioOutputText.Text = DateTime.Now.ToString();
+        //        var b = 5;
+        //    });
+        //}
+
 
         /// <summary>
         /// Gets the <see cref="NavigationHelper"/> associated with this <see cref="Page"/>.
