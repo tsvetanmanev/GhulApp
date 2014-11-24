@@ -6,9 +6,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
+using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -44,7 +46,29 @@ namespace GhulApp.Pages
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
 
+            this.NavigationCacheMode = NavigationCacheMode.Required;
+            this.LoadLocation();
+
+
             this.DataContext = viewModel;
+        }
+
+        private void LoadLocation()
+        {
+            Geolocator locator = new Geolocator();
+            locator.DesiredAccuracy = PositionAccuracy.High;
+            locator.MovementThreshold = 100;
+
+            locator.PositionChanged += (snd, args) =>
+            {
+                this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                {
+                    var coords = args.Position.Coordinate;
+                    this.tbLatitude.Text = string.Format("Latitude: {0}", coords.Latitude);
+                    this.tbLongitude.Text = string.Format("Longitude: {0}", coords.Longitude);
+                });
+            };
+            locator.GetGeopositionAsync();
         }
 
         /// <summary>

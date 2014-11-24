@@ -9,9 +9,13 @@
             <Setter Property="FontSize" Value="30"/>
         </Style>
         <DataTemplate x:Key="AddressTemplate">
-            <StackPanel>
+            <StackPanel Orientation="Vertical">
                 <TextBlock Text="{Binding Name}"
                            FontSize="32" />
+                <TextBlock Text="{Binding GeoLocation.Latitude}"
+                           FontSize="18" />
+                <TextBlock Text="{Binding GeoLocation.Longitude}"
+                           FontSize="18" />
             </StackPanel>
         </DataTemplate>
     </Application.Resources>

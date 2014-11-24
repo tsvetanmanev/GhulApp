@@ -7,6 +7,8 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
+using Windows.Devices.Geolocation;
+using Windows.UI.Core;
 
 namespace GhulApp.ViewModels
 {
@@ -14,22 +16,40 @@ namespace GhulApp.ViewModels
     {
         private bool initializing;
         private ObservableCollection<AddressViewModel> addresses;
+        private ParseGeoPoint userGeoPoint;
 
         public MainPageViewModel()
         {
+            this.LoadLocation();
+        }
+
+        private async void LoadLocation()
+        {
+            Geolocator locator = new Geolocator();
+
+            locator.DesiredAccuracy = PositionAccuracy.High;
+            locator.MovementThreshold = 100;
+            Geoposition position = await locator.GetGeopositionAsync();
+
+            userGeoPoint = new ParseGeoPoint(position.Coordinate.Latitude, position.Coordinate.Longitude);
+
             this.LoadAddresses();
         }
 
         private async Task LoadAddresses()
         {
             this.Initializing = true;
+            //TODO: Implement mazna loading animation
+
             var addresses = await new ParseQuery<AddressModel>()
                     .FindAsync();
+            var c = 7;
 
             this.Addresses = addresses.AsQueryable()
                     .Select(AddressViewModel.FromModel);
-
-            int ca = 5;
+            //var tempItems = Addresses;
+            //Addresses = null;
+            //Addresses = tempItems.OrderBy(a => a.GeoLocation.DistanceTo(userGeoPoint));
 
             this.Initializing = false;
         }

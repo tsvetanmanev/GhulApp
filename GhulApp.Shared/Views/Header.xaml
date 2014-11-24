@@ -24,11 +24,11 @@
                        Grid.Column="0"
                        Grid.ColumnSpan="2"
                         Text="{Binding TitleText}" 
-                       Style="{ThemeResource HeaderTextBlockStyle}"/>
+                       FontSize="36"/>
             <TextBlock Text="{Binding Username}"
                        Grid.Row="0"
                        Grid.Column="1" 
-                       FontSize="37"/>
+                       FontSize="28"/>
             <Button Content="Sign out"
                     Click="OnSignOutButtonClick"
                     Grid.Row="1"

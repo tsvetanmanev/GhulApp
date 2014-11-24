@@ -34,17 +34,12 @@
                       ItemTemplate="{StaticResource AddressTemplate}"
                       SelectionChanged="OnAddressListViewSelection"
                       SelectionMode="Single"/>
-            
-            
-            <!--<Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            
-            <Button Content="Choose location" Grid.Row="0"/>
-            <Button Content="Families" Grid.Row="1"/>
-            <Button Content="Goals" Grid.Row="2"/>-->
+            <StackPanel VerticalAlignment="Bottom">
+                <TextBlock Name="tbLatitude"
+                           FontSize="18"/>
+                <TextBlock Name="tbLongitude"
+                           FontSize="18"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

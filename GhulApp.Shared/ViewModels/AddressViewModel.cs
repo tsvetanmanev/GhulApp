@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GhulApp.Models;
+using Parse;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,8 @@ namespace GhulApp.ViewModels
                     AddressText = model.AddressText,
                     TreasuryAmount = model.TreasuryAmount,
                     Families = model.Families,
-                    Goals = model.Goals
+                    Goals = model.Goals,
+                    GeoLocation = model.GeoLocation
                 };
             }
         }
@@ -48,5 +50,7 @@ namespace GhulApp.ViewModels
         public IEnumerable<FamilyModel> Families { get; set; }
 
         public IEnumerable<GoalModel> Goals { get; set; }
+
+        public ParseGeoPoint GeoLocation { get; set; }
     }
 }

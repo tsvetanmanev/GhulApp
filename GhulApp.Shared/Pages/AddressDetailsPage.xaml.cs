@@ -1,10 +1,13 @@
 ﻿using GhulApp.Common;
+using GhulApp.Models;
 using GhulApp.ViewModels;
+using Parse;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
@@ -43,7 +46,7 @@ namespace GhulApp.Pages
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
 
-            this.ViewModel = viewModel;
+            this.ViewModel = viewModel;            
         }
 
         /// <summary>
@@ -108,8 +111,20 @@ namespace GhulApp.Pages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.ViewModel.Address = e.Parameter as AddressViewModel;
+            //this.ViewModel.Families = LoadFamilies(this.ViewModel.Address);
             this.navigationHelper.OnNavigatedTo(e);
+            var b = 5;
         }
+
+        //private async Task LoadFamilies(AddressViewModel address)
+        //{
+
+        //    var currentAddress = address;
+        //    var families = await new ParseQuery<FamilyModel>()
+        //        .Where(fam => fam.Address.Name == currentAddress.Name)
+        //        .FindAsync();
+        //    var b = 5;
+        //}
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
@@ -133,6 +148,12 @@ namespace GhulApp.Pages
             {
                 this.DataContext = value;
             }
+        }
+
+        private void OnLoadFamiliesButtonClicked(object sender, RoutedEventArgs e)
+        {
+            var b = 5;
+            ViewModel.LoadFamilies();
         }
     }
 }
