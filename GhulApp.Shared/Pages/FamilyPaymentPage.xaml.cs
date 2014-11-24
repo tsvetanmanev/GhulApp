@@ -17,6 +17,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ShakeGestures;
 using Windows.UI.Core;
+using GhulApp.Models;
+using GhulApp.ViewModels;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -133,9 +135,15 @@ namespace GhulApp.Pages
         /// </summary>
         /// <param name="e">Provides data for navigation methods and event
         /// handlers that cannot cancel the navigation request.</param>
+        /// 
+        
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            //Fix the spagheti
+            this.Family = e.Parameter as FamilyModel;
             this.navigationHelper.OnNavigatedTo(e);
+            var b = 5;
+            this.TextBlockFamily.Text = Family.Name;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -149,5 +157,7 @@ namespace GhulApp.Pages
         {
             this.Frame.Navigate(typeof(LoginPage));
         }
+
+        public FamilyModel Family { get; set; }
     }
 }

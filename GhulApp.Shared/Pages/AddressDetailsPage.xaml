@@ -38,17 +38,17 @@
             <StackPanel DataContext="{Binding Address}"
                         Grid.Row="0" 
                         Grid.ColumnSpan="2"
-                        Margin="0 0 0 20">
+                        Margin="0 0 0 0">
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
                     <TextBlock Text="{Binding AddressText}" 
-                           Grid.Column="0"
+                           Grid.Row="0"
                            FontSize="26"/>
                     <TextBlock Text="{Binding TreasuryAmount}"
-                           Grid.Column="1"
+                           Grid.Row="1"
                            FontSize="26"
                            TextAlignment="Right"/>
                 </Grid>

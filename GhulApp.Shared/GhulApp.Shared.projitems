@@ -36,6 +36,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AddressDetailsPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AddressViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\FamilyPaymentPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\UserViewModel.cs" />
